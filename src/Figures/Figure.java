@@ -36,7 +36,7 @@ public abstract class Figure {
     Type getTeam() {
         return team;
     }
-    void mov(int x,int y) {
+    void mov(int x, int y) {
         pos = new Point (x, y);
     }
     void draw() {

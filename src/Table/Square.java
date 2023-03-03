@@ -34,9 +34,9 @@ public class Square {
         return pos;
     }
 
-    void Occupy() { // TODO: Add Who and Team!
+    void Occupy(Figure object, Type team) { // TODO: Add Who and Team!
         isOccupied = true;
-
+        this.team = team;
     }
 
     boolean isOccupied() {

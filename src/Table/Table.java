@@ -2,20 +2,15 @@ import sum.kern.Bildschirm;
 import sum.kern.Stift;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 // 8x8
 public class Table {
 
-    int[] x;
-    int[] y;
     double factorH = .075;
     double factorV = .1;
     Bildschirm bildschirm;
     Stift stift = new Stift();
     Square[][] Rows = new Square[0x8][0x8];
-    Square[] table = new Square[0x8];
 
 
     Table(Bildschirm bildschirm) {
@@ -25,13 +20,16 @@ public class Table {
     // Section Reference------------------------------------
     private void reference() {
         resetPos();
-        for (int i = 1; i < 8; i++) {
-            for (int j = 1; j < 8; j++) {
-                table[j] = new Square(bildschirm, factorH, factorV, j, i);
-                Rows[i][j] = table[j];
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                Rows[i][j] = new Square(bildschirm, factorH, factorV, j, i);
             }
 
         }
+    }
+
+    Point getField(int x, int y){
+        return Rows[y][x].getPos();
     }
 
     // Section Draw-----------------------------------------

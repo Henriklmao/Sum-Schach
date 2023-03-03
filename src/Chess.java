@@ -1,7 +1,4 @@
-import sum.kern.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import sum.kern.Bildschirm;
 
 public class Chess {
     Bildschirm bildschirm = new Bildschirm(true);
