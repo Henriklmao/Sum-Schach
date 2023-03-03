@@ -14,6 +14,7 @@ public class Square {
     Bildschirm bildschirm;
     int width;
     int height;
+
     Square(Bildschirm bildschirm, double factorH, double factorV, int x, int y) {
         this.bildschirm = bildschirm;
         isOccupied = false;
@@ -33,7 +34,7 @@ public class Square {
         return pos;
     }
 
-    void Occupy() {
+    void Occupy() { // TODO: Add Who and Team!
         isOccupied = true;
 
     }
