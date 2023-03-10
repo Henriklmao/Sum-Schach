@@ -3,17 +3,13 @@ import sum.kern.Bildschirm;
 import java.awt.*;
 
 public class Square {
-
-    enum Type {
-        BLACK,
-        White
-    }
     boolean isOccupied;
-    Type team;
+    Chess.Type team;
     Point pos;
     Bildschirm bildschirm;
     int width;
     int height;
+    Figure occupant;
 
     Square(Bildschirm bildschirm, double factorH, double factorV, int x, int y) {
         this.bildschirm = bildschirm;
@@ -34,7 +30,8 @@ public class Square {
         return pos;
     }
 
-    void Occupy(Figure object, Type team) { // TODO: Add Who and Team!
+    void occupy(Figure object, Chess.Type team) { // TODO: Add Who and Team!
+        occupant = object;
         isOccupied = true;
         this.team = team;
     }
@@ -42,7 +39,8 @@ public class Square {
     boolean isOccupied() {
         return isOccupied;
     }
-    boolean isFriendly(Type type) {
+    
+    boolean isFriendly(Chess.Type type) {
         if (type == team) return true;
         return false;
     }

@@ -34,9 +34,11 @@ public class Figures {
         for (int i = 0; i < 16; i++) {
             Pawn pawn;
             if (i <= 2) {
-                pawn = new Pawn(Pawn.Type.BLACK, bildschirm, table, i);
+                pawn = new Pawn(Chess.Type.Black, bildschirm, table);
+                pawn.setId(pawn);
             } else {
-                pawn = new Pawn(Pawn.Type.WHITE, bildschirm, table, i);
+                pawn = new Pawn(Chess.Type.White, bildschirm, table);
+                pawn.setId(pawn);
             }
             Pawns.add(pawn);
         } // Spawn Pawns

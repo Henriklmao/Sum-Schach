@@ -1,6 +1,11 @@
 import sum.kern.Bildschirm;
 
 public class Chess {
+    enum Type {
+
+        Black,
+        White
+    }
     Bildschirm bildschirm = new Bildschirm(true);
     Table table;
     Figures figures;

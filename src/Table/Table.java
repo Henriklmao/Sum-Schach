@@ -10,7 +10,7 @@ public class Table {
     double factorV = .1;
     Bildschirm bildschirm;
     Stift stift = new Stift();
-    Square[][] Rows = new Square[0x8][0x8];
+    Square[][] squares = new Square[0x8][0x8];
 
 
     Table(Bildschirm bildschirm) {
@@ -22,14 +22,14 @@ public class Table {
         resetPos();
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                Rows[i][j] = new Square(bildschirm, factorH, factorV, j, i);
+                squares[i][j] = new Square(bildschirm, factorH, factorV, j, i);
             }
 
         }
     }
 
     Point getField(int x, int y){
-        return Rows[y][x].getPos();
+        return squares[y][x].getPos();
     }
 
     // Section Draw-----------------------------------------
@@ -44,6 +44,15 @@ public class Table {
             nextSquare(false);
         }
         reference();
+    }
+    void mov(Figure mover, Point sqr) {
+        squares[sqr.y][sqr.x].occupy(mover, mover.getTeam());
+    }
+    boolean testMov(Figure mover, Point trial) {
+        if (squares[trial.y][trial.x].isOccupied()) {
+            return squares[trial.y][trial.x].isFriendly(mover.getTeam());
+        }
+        return false;
     }
     private void resetPos() {
         stift.bewegeBis(bildschirm.breite()*factorH,bildschirm.hoehe()*factorV);

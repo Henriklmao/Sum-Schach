@@ -5,35 +5,35 @@ import java.awt.*;
 
 public abstract class Figure {
 
-    enum Type {
-        BLACK,
-        WHITE
-    }
-
-    Type team;
+    Chess.Type team;
     Bildschirm bildschirm;
     Table table;
-    int ID;
+    Figure ID;
     Point pos;
     Buntstift stift = new Buntstift();
 
-    public Figure(Type type, Bildschirm bildschirm, Table table, int ID) {
+    public Figure(Chess.Type type, Bildschirm bildschirm, Table table) {
 
         this.team = type;
         this.bildschirm = bildschirm;
         this.table = table;
-        this.ID = ID;
     }
 
     //void init(x, y) {
     //    pos = new Point(x, y);
     // }
-    int getID() {return ID;}
+    Figure getID() {return ID;}
+    public void setId(Figure ID) {
+        this.ID=ID;
+    }
 
     Point getPos() {
         return pos;
     }
-    Type getTeam() {
+
+    /** @Method: getLegalMoves() Stores Moveset of Figure,   */
+    abstract Point[] getLegalMoves();
+    Chess.Type getTeam() {
         return team;
     }
     void mov(int x, int y) {
