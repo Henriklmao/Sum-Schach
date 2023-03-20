@@ -30,7 +30,7 @@ public class Table {
         }
     }
 
-    Point getField(int x, int y){
+    Point getSquare(int x, int y){
         return squares[y][x].getPos();
     }
 

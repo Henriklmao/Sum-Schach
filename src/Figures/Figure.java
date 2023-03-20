@@ -10,17 +10,12 @@ public abstract class Figure {
     Table table;
     Point pos;
     Buntstift stift = new Buntstift();
-
     public Figure(Chess.Type type, Bildschirm bildschirm, Table table) {
 
         this.team = type;
         this.bildschirm = bildschirm;
         this.table = table;
     }
-
-    //void init(x, y) {
-    //    pos = new Point(x, y);
-    // }
     Figure getID() {return this;}
 
     Point getPos() {
@@ -32,12 +27,13 @@ public abstract class Figure {
     Chess.Type getTeam() {
         return team;
     }
+
     void mov(int x, int y) {
-        pos = new Point (x, y);
+        table.mov(this, new Point (x, y));
+        pos = table.getSquare(x, y);
     }
     void draw() {
         stift.bewegeBis(pos.x, pos.y);
         stift.zeichneKreis(20);
     }
-
 }

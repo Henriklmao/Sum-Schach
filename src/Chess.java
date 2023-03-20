@@ -24,9 +24,8 @@ public class Chess {
 
     void Game() {
         table.draw();
-        while (true) {
-            figures.draw();
-            bildschirm.zeichneDich();
-        }
+        figures.init();
+        figures.draw();
+        bildschirm.zeichneDich();
     }
 }
