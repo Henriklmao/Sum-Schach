@@ -1,6 +1,5 @@
 import sum.kern.Bildschirm;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 public class Figures {
@@ -29,28 +28,65 @@ public class Figures {
         var Queens = new ArrayList<Queen>();
         var Kings = new ArrayList<King>();
 
-        all = new ArrayList[]{Pawns, Bishops, Rooks, Queens, Kings};
-
+        // Pawns
         for (int i = 0; i < 16; i++) {
             Pawn pawn;
-            if (i <= 2) {
+            if (i < 8) {
                 pawn = new Pawn(Chess.Type.Black, bildschirm, table);
-                pawn.setId(pawn);
             } else {
                 pawn = new Pawn(Chess.Type.White, bildschirm, table);
-                pawn.setId(pawn);
             }
             Pawns.add(pawn);
-        } // Spawn Pawns
-        /*for (int i = 0; i < 2; i++) {
-            King king;
-            if (i == 1) {
-                king = new King(King.Type.BLACK, bildschirm, table, i);
+        }
+
+        // Bishops
+        for (int i = 0; i < 4; i++) {
+            Bishop bishop;
+            if (i < 2) {
+                bishop = new Bishop(Chess.Type.Black, bildschirm, table);
             } else {
-                king = new Pawn(King.Type.WHITE, bildschirm, table, i);
+                bishop = new Bishop(Chess.Type.White, bildschirm, table);
             }
-            Kings.add(King);
-        }*/
+            Bishops.add(bishop);
+        }
+
+        // Rooks
+        for (int i = 0; i < 4; i++) {
+            Rook rook;
+            if (i < 2) {
+                rook = new Rook(Chess.Type.Black, bildschirm, table);
+            } else {
+                rook = new Rook(Chess.Type.White, bildschirm, table);
+            }
+            Rooks.add(rook);
+        }
+
+        // Queens and Kings
+        Queen queen;
+        King king;
+        queen = new Queen(Chess.Type.Black, bildschirm, table);
+        king = new King(Chess.Type.Black, bildschirm, table);
+        Queens.add(queen);
+        Kings.add(king);
+
+        queen = new Queen(Chess.Type.Black, bildschirm, table);
+        king = new King(Chess.Type.Black, bildschirm, table);
+        Queens.add(queen);
+        Kings.add(king);
+    }
+
+    void draw() {
+        for (Pawn pawn : Pawns) {
+            pawn.draw();
+        }
+        for (Bishop bishop : Bishops) {
+            bishop.draw();
+        }
+
+    }
+
+    void init() {
+
     }
     void Kill(int type, int n) {
         all[type].remove(n);

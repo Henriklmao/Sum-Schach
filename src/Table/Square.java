@@ -10,6 +10,7 @@ public class Square {
     int width;
     int height;
     Figure occupant;
+    boolean enPassant = false; // Needed Soon to store en passant
 
     Square(Bildschirm bildschirm, double factorH, double factorV, int x, int y) {
         this.bildschirm = bildschirm;

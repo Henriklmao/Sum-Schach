@@ -12,7 +12,9 @@ public class Table {
     Stift stift = new Stift();
     Square[][] squares = new Square[0x8][0x8];
 
-
+    /**
+     * White spawns at the bottom, black at the Top.
+     **/
     Table(Bildschirm bildschirm) {
         this.bildschirm = bildschirm;
     }

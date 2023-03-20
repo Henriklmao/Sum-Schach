@@ -8,7 +8,6 @@ public abstract class Figure {
     Chess.Type team;
     Bildschirm bildschirm;
     Table table;
-    Figure ID;
     Point pos;
     Buntstift stift = new Buntstift();
 
@@ -22,16 +21,13 @@ public abstract class Figure {
     //void init(x, y) {
     //    pos = new Point(x, y);
     // }
-    Figure getID() {return ID;}
-    public void setId(Figure ID) {
-        this.ID=ID;
-    }
+    Figure getID() {return this;}
 
     Point getPos() {
         return pos;
     }
 
-    /** @Method: getLegalMoves() Stores Moveset of Figure,   */
+    /** @Method: getLegalMoves() stores MoveSet of Figure,   */
     abstract Point[] getLegalMoves();
     Chess.Type getTeam() {
         return team;

@@ -2,7 +2,6 @@ import sum.kern.Bildschirm;
 
 public class Chess {
     enum Type {
-
         Black,
         White
     }
@@ -26,6 +25,7 @@ public class Chess {
     void Game() {
         table.draw();
         while (true) {
+            figures.draw();
             bildschirm.zeichneDich();
         }
     }
