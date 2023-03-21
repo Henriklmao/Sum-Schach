@@ -10,7 +10,7 @@ public class Square {
     int width;
     int height;
     Figure occupant;
-    boolean enPassant = false; // Needed Soon to store en passant
+    // boolean enPassant = false; // Needed soon to store if en passant is possible
 
     Square(Bildschirm bildschirm, double factorH, double factorV, int x, int y) {
         this.bildschirm = bildschirm;
@@ -43,7 +43,6 @@ public class Square {
     }
     
     boolean isFriendly(Chess.Type type) {
-        if (type == team) return true;
-        return false;
+        return type == team;
     }
 }

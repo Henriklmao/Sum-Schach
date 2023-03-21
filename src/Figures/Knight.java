@@ -13,6 +13,7 @@ public class Knight extends Figure {
     }
 
     /**  Moveset **/
+    @Override
     Point[] getLegalMoves() {
 
         // Standard moves incl. first move

@@ -3,10 +3,6 @@ import sum.kern.Bildschirm;
 import java.util.ArrayList;
 
 public class Figures {
-    enum Type {
-        BLACK,
-        WHITE
-    }
     ArrayList<Pawn> Pawns;
     ArrayList<Bishop> Bishops;
     ArrayList<Rook> Rooks;
@@ -31,11 +27,10 @@ public class Figures {
         // Pawns
         for (int i = 0; i < 16; i++) {
             Pawn pawn;
-            if (i < 8) {
+            if (i < 8)
                 pawn = new Pawn(Chess.Type.Black, bildschirm, table);
-            } else {
+            else
                 pawn = new Pawn(Chess.Type.White, bildschirm, table);
-            }
             Pawns.add(pawn);
         }
         // Bishops
@@ -87,7 +82,6 @@ public class Figures {
         for (Pawn pawn : Pawns) {
             pawn.draw();
         }
-        /*
         for (Bishop bishop : Bishops) {
             bishop.draw();
         }
@@ -103,18 +97,53 @@ public class Figures {
         for (King king : Kings) {
             king.draw();
         }
-         */
 
     }
 
+    /** Initialiser **/
     void init() {
+        initPawn();
+        initRook();
+        initBishop();
+        initKnight();
+        initKing();
+        initQueen();
+    }
+    void initPawn() {
+        // initialise pawns
         int i = 0;
         for (Pawn pawn : Pawns) {
-            if (i == 8) i = 0;
-            if (pawn.getTeam() == Chess.Type.Black) pawn.mov(2, i);
-            else pawn.mov(6, i);
+            if (i == 8) i = 0; // For lateral displacement
+            if (pawn.getTeam() == Chess.Type.Black) pawn.mov(i, 1);
+            else pawn.mov(i, 6);
             i++;
         }
+    }
+    void initRook() {
+        Rooks.get(0).mov(0, 0);
+        Rooks.get(1).mov(7, 0);
+        Rooks.get(2).mov(0, 7);
+        Rooks.get(3).mov(7, 7);
+    }
+    void initBishop() {
+        Bishops.get(0).mov(2, 0);
+        Bishops.get(1).mov(5, 0);
+        Bishops.get(2).mov(2, 7);
+        Bishops.get(3).mov(5, 7);
+    }
+    void initKnight() {
+        Knights.get(0).mov(1, 0);
+        Knights.get(1).mov(6, 0);
+        Knights.get(2).mov(1, 7);
+        Knights.get(3).mov(6, 7);
+    }
+    void initKing() {
+        Kings.get(0).mov(4, 0);
+        Kings.get(1).mov(4, 7);
+    }
+    void initQueen() {
+        Queens.get(0).mov(3, 0);
+        Queens.get(1).mov(3, 7);
     }
 
     void kill() {

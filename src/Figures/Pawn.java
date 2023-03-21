@@ -15,6 +15,7 @@ public class Pawn extends Figure {
     }
 
     /** Pawn Moveset **/
+    @Override
     Point[] getLegalMoves() {
 
         // Standard moves incl. first move

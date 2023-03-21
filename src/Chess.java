@@ -13,7 +13,6 @@ public class Chess {
         new Chess();
     }
     Chess() {
-
         table = new Table(bildschirm);
         figures = new Figures(table, bildschirm);
         Game();
