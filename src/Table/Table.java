@@ -22,9 +22,9 @@ public class Table {
     // Section Reference------------------------------------
     private void reference() {
         resetPos();
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                squares[i][j] = new Square(bildschirm, factorH, factorV, j, i);
+        for (int y = 0; y < 8; y++) {
+            for (int x = 0; x < 8; x++) {
+                squares[y][x] = new Square(bildschirm, factorH, factorV, x, y);
             }
 
         }
@@ -38,7 +38,6 @@ public class Table {
     void draw() {
         resetPos();
         for (int i = 0; i < 8; i++) {
-
             stift.dreheBis(0);
             for (int o = 0; o < 8; o++) nextSquare(true);
             resetH();
@@ -48,7 +47,7 @@ public class Table {
         reference();
     }
     void mov(Figure mover, Point sqr) {
-        squares[sqr.y][sqr.x].occupy(mover, mover.getTeam());
+        squares[sqr.y][sqr.x].occupy(mover, mover.getTeam()); // Occupys Square
     }
     boolean testMov(Figure mover, Point trial) {
         if (squares[trial.y][trial.x].isOccupied()) {

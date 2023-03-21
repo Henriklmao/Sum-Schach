@@ -21,12 +21,12 @@ public class Figures {
         this.bildschirm = bildschirm;
 
         // Init Arrays
-        Pawns = new ArrayList<Pawn>();
-        Bishops = new ArrayList<Bishop>();
-        Rooks = new ArrayList<Rook>();
-        Knights = new ArrayList<Knight>();
-        Kings = new ArrayList<King>();
-        Queens = new ArrayList<Queen>();
+        Pawns = new ArrayList<>();
+        Bishops = new ArrayList<>();
+        Rooks = new ArrayList<>();
+        Knights = new ArrayList<>();
+        Kings = new ArrayList<>();
+        Queens = new ArrayList<>();
 
         // Pawns
         for (int i = 0; i < 16; i++) {
@@ -87,6 +87,7 @@ public class Figures {
         for (Pawn pawn : Pawns) {
             pawn.draw();
         }
+        /*
         for (Bishop bishop : Bishops) {
             bishop.draw();
         }
@@ -102,6 +103,7 @@ public class Figures {
         for (King king : Kings) {
             king.draw();
         }
+         */
 
     }
 

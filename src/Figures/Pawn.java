@@ -1,4 +1,5 @@
 import sum.kern.Bildschirm;
+import sum.multimedia.Bild; //<-- To render pictures
 
 import java.awt.*;
 /**
@@ -8,7 +9,7 @@ import java.awt.*;
  */
 
 public class Pawn extends Figure {
-    boolean hasMoved = false;
+    int hasMoved = 0;
     public Pawn(Chess.Type type, Bildschirm bildschirm, Table table) {
         super (type, bildschirm, table);
     }
@@ -27,7 +28,7 @@ public class Pawn extends Figure {
         possible = table.testMov(this, trial);
         if (possible) moves[0] = trial;
         // First Move
-        if (!hasMoved) {
+        if (hasMoved > 2) {
             mov++;
             if (team == Chess.Type.Black) mov = -2;
             trial = new Point(getPos().x,getPos().y+mov);
@@ -44,7 +45,7 @@ public class Pawn extends Figure {
     // Custom move to set hasMoved to true;
     @Override
     void mov(int x, int y) {
-        hasMoved = true;
+        hasMoved++;
         super.mov(x, y);
     }
 }

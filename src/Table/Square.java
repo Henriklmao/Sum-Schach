@@ -15,14 +15,15 @@ public class Square {
     Square(Bildschirm bildschirm, double factorH, double factorV, int x, int y) {
         this.bildschirm = bildschirm;
         isOccupied = false;
-        setPos(x, y);
         width = (int) (bildschirm.breite()*factorH);
         height = (int) (bildschirm.hoehe()*factorV);
+        setPos(x, y);
+
     }
     void setPos(int x, int y) {
         x++;
         y++;
-    pos = new Point (
+        pos = new Point (
             x*width + width/2 , y*height + height/2
         );
     }
@@ -31,8 +32,8 @@ public class Square {
         return pos;
     }
 
-    void occupy(Figure object, Chess.Type team) { // TODO: Add Who and Team!
-        occupant = object;
+    void occupy(Figure figure, Chess.Type team) {
+        occupant = figure;
         isOccupied = true;
         this.team = team;
     }
