@@ -37,7 +37,6 @@ public class Square {
         isOccupied = true;
         this.team = team;
     }
-
     boolean isOccupied() {
         return isOccupied;
     }

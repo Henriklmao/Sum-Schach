@@ -49,10 +49,15 @@ public class Table {
     void mov(Figure mover, Point sqr) {
         squares[sqr.y][sqr.x].occupy(mover, mover.getTeam()); // Occupys Square
     }
-    boolean testMov(Figure mover, Point trial) {
+    boolean testMov(Figure mover, Point trial) { // Field is occupied
         if (squares[trial.y][trial.x].isOccupied()) {
-            return squares[trial.y][trial.x].isFriendly(mover.getTeam());
+            return squares[trial.y][trial.x].isFriendly(mover.getTeam()); // false
+            return false;
         }
+    }
+    boolean testKillMov(Figure mover, Point trial) {
+        if (squares[trial.y][trial.x].isOccupied())
+            return squares[trial.y][trial.x].isFriendly(mover.getTeam());
         return false;
     }
     private void resetPos() {

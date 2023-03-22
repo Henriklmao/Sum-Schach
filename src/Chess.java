@@ -1,5 +1,7 @@
 import sum.kern.Bildschirm;
 
+import java.awt.*;
+
 public class Chess {
     enum Type {
         Black,

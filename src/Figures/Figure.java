@@ -9,6 +9,7 @@ public abstract class Figure {
     Bildschirm bildschirm;
     Table table;
     Point pos;
+    Point trial;
     Buntstift stift = new Buntstift();
     public Figure(Chess.Type type, Bildschirm bildschirm, Table table) {
 
@@ -31,6 +32,9 @@ public abstract class Figure {
     void mov(int x, int y) {
         table.mov(this, new Point (x, y));
         pos = table.getSquare(x, y);
+    }
+    boolean possible() {
+        return table.testMov(this, trial);
     }
     void draw() {
         stift.bewegeBis(pos.x, pos.y);

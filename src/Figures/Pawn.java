@@ -7,6 +7,7 @@ import java.awt.*;
  * Pawn is a moveset extension for the general Figure superclass.
  * Funfact: in Chess, the pawn has the most complex moveset.
  */
+/** Chess pieces by Cburnett - Own work, CC BY-SA 3.0, <a href="https://commons.wikimedia.org/wiki/Category:SVG_chess_pieces">wikimedia.org</a>**/
 
 public class Pawn extends Figure {
     int hasMoved = 0;
@@ -20,26 +21,25 @@ public class Pawn extends Figure {
 
         // Standard moves incl. first move
         Point[] moves = new Point[0];
-
-        boolean movsleft = true;
         int mov = 1;
-        boolean possible;
+
         if (team == Chess.Type.Black) mov = -1;
-        Point trial = new Point(getPos().x,getPos().y+mov);
-        possible = table.testMov(this, trial);
-        if (possible) moves[0] = trial;
-        // First Move
+        trial = new Point(getPos().x,getPos().y+mov);
+        if (possible()) moves[moves.length] = trial;
+
+        // Test Killable and en Passante
+        trial = new Point(getPos().x-1,getPos().y+mov);
+        if (possible()) moves[moves.length] = trial;
+        trial = new Point(getPos().x+1,getPos().y+mov); //
+        if (possible()) moves[moves.length] = trial;
+            // First Move
         if (hasMoved > 2) {
             mov++;
             if (team == Chess.Type.Black) mov = -2;
             trial = new Point(getPos().x,getPos().y+mov);
-            possible = table.testMov(this, trial);
-            if (possible) moves[1] = trial;
+            if (possible()) moves[moves.length] = trial;
         }
 
-        // Test Killable
-
-        // En Passante
         return moves;
     }
 

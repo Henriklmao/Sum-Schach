@@ -2,10 +2,11 @@ import sum.kern.Bildschirm;
 
 import java.awt.*;
 /**
- * Pawn class for Sum-Schach.
- * Pawn is a moveset extension for the general Figure superclass.
- * Funfact: in Chess, the pawn has the most complex moveset.
+ * Knight class for Sum-Schach.
+ * Knight is a moveset extension for the general Figure superclass.
  */
+
+/** Chess pieces by Cburnett - Own work, CC BY-SA 3.0, <a href="https://commons.wikimedia.org/wiki/Category:SVG_chess_pieces">wikimedia.org</a>**/
 
 public class Knight extends Figure {
     public Knight(Chess.Type type, Bildschirm bildschirm, Table table) {
