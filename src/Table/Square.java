@@ -10,7 +10,8 @@ public class Square {
     int width;
     int height;
     Figure occupant;
-    // boolean enPassant = false; // Needed soon to store if en passant is possible
+    boolean enPassante;
+    Figure enPassanteFigure = null;
 
     Square(Bildschirm bildschirm, double factorH, double factorV, int x, int y) {
         this.bildschirm = bildschirm;
@@ -20,7 +21,13 @@ public class Square {
         setPos(x, y);
 
     }
-    void setPos(int x, int y) {
+
+    /**
+     * Sets Point Pos to center of square
+     * @param x Type int
+     * @param y Type int
+     */
+    private void setPos(int x, int y) {
         x++;
         y++;
         pos = new Point (
@@ -28,20 +35,61 @@ public class Square {
         );
     }
 
+    /**
+     * @return Point pos
+     */
     Point getPos() {
         return pos;
     }
-
+    /**
+     * Occupies defined Square
+     * @param figure Object of Figure
+     * @param team  as Chess.Type
+     */
     void occupy(Figure figure, Chess.Type team) {
         occupant = figure;
         isOccupied = true;
         this.team = team;
     }
+    /**
+     * Allows Square to be en passanted
+     * @param mover Type Figure
+     */
+    void allowEnPassante(Figure mover) {
+        enPassanteFigure = mover;
+    }
+    /**
+     * @Method: Disables being able to get killed by en passante
+     */
+    void disableEnPassante() {
+        enPassante = false;
+        enPassanteFigure = null;
+    }
+    /**
+     * @Method: Kills Figure which allowed enPassante
+     */
+    void enPassante() {
+        enPassanteFigure.kill();
+        disableEnPassante();
+    }
+    /**
+     * Tests if an EnPassante is possible
+     * @return boolean enPassante
+     */
+    boolean getEnPassante(){
+        return enPassante;
+    }
+    /**
+     * @return boolean isOccupied
+     */
     boolean isOccupied() {
         return isOccupied;
     }
-    
-    boolean isFriendly(Chess.Type type) {
-        return type == team;
+    /**
+     * @param type as Chess.Type
+     * @return true if occupant is not in same Team
+     */
+    boolean isEnemy(Chess.Type type) {
+        return !(type == team);
     }
 }

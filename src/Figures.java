@@ -1,6 +1,8 @@
 import sum.kern.Bildschirm;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class Figures {
     ArrayList<Pawn> Pawns;
@@ -75,9 +77,11 @@ public class Figures {
         king = new King(Chess.Type.White, bildschirm, table);
         Queens.add(queen);
         Kings.add(king);
+
     }
 
     void draw() {
+        testDead();
 
         for (Pawn pawn : Pawns) {
             pawn.draw();
@@ -97,7 +101,6 @@ public class Figures {
         for (King king : Kings) {
             king.draw();
         }
-
     }
 
     /** Initialiser **/
@@ -146,8 +149,16 @@ public class Figures {
         Queens.get(1).mov(3, 7);
     }
 
-    void kill() {
-
+    void kill(Figure figure) {
+        figure.kill();
+    }
+    void testDead() {
+        Pawns.removeIf(Figure::isDead);
+        Bishops.removeIf(Figure::isDead);
+        Rooks.removeIf(Figure::isDead);
+        Queens.removeIf(Figure::isDead);
+        Kings.removeIf(Figure::isDead);
+        Knights.removeIf(Figure::isDead);
     }
 
 }
