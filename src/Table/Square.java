@@ -2,6 +2,11 @@ import sum.kern.Bildschirm;
 
 import java.awt.*;
 
+/**
+ * <h1>Square class for Sum-Schach</h1>
+ * <P>In Sum-Schach, the Square class is used to store a multitude of information about a</P>
+ * square on the playfield.
+ */
 public class Square {
     boolean isOccupied;
     Chess.Type team;
@@ -12,7 +17,6 @@ public class Square {
     Figure occupant;
     boolean enPassante;
     Figure enPassanteFigure = null;
-
     Square(Bildschirm bildschirm, double factorH, double factorV, int x, int y) {
         this.bildschirm = bildschirm;
         isOccupied = false;
@@ -21,7 +25,6 @@ public class Square {
         setPos(x, y);
 
     }
-
     /**
      * Sets Point Pos to center of square
      * @param x Type int

@@ -12,8 +12,9 @@ import java.util.ArrayList;
  *   Chess pieces by Cburnett - Own work, CC BY-SA 3.0, <a href="https://commons.wikimedia.org/wiki/Category:SVG_chess_pieces">wikimedia.org</a>
  *   </P>**/
 public class Pawn extends Figure {
-    int hasMoved = 0;
+    boolean hasMoved = false;
     boolean allowEnPassante = false;
+    Point enPassantePos;
     Pawn(Chess.Type type, Bildschirm bildschirm, Table table) {
         super (type, bildschirm, table);
         isPawn = true;
@@ -31,10 +32,10 @@ public class Pawn extends Figure {
         // Test Killable and en Passant
         trial = new Point(getPos().x-1,getPos().y+mov);
         addMovesKill(-1,1);
-        trial = new Point(getPos().x+1,getPos().y+mov); //
+        trial = new Point(getPos().x+1,getPos().y+mov);
         if (possible()) moves.add(trial);
             // First Move
-        if (hasMoved > 2) {
+        if (!hasMoved) {
             mov++;
             if (team == Chess.Type.Black) mov = -2;
             trial = new Point(getPos().x, getPos().y + mov);
@@ -42,14 +43,31 @@ public class Pawn extends Figure {
         }
             return moves;
         }
-
-    // Custom move to set hasMoved to true;
+    /**
+     * Overridden mov Method, to allow en passante check two square movement at start.
+     * @param x Type int
+     * @param y Type int
+     */
     @Override
     void mov(int x, int y) {
-        hasMoved++;
+
+        if (pos == null) {
+            super.mov(x, y);
+            return;
+        }
+        allowEnPassante = false;
+        if (enPassantePos != null) {
+            table.disableEnPassante(enPassantePos);
+        }
+        if (y == pos.y + 2 || y == pos.y - 2) {
+            enPassantePos = new Point(new Point(x, y));
+            table.allowEnPassante(this, new Point(x, y));
+        } else {
+            enPassantePos = null;
+        }
+        hasMoved = true;
         super.mov(x, y);
     }
-
     /**
      * Special move method to allow Pawn to only move forward and not kill.
      * @param MovX Type int
@@ -74,5 +92,4 @@ public class Pawn extends Figure {
             moves.add(trial);
         }
     }
-
 }

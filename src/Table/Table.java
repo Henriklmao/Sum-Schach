@@ -59,7 +59,9 @@ public class Table {
      * @param sqr Java.awt.Point
      */
     void mov(Figure mover, Point sqr) {
-        squares[sqr.y][sqr.x].occupy(mover, mover.getTeam()); // Occupies Square
+        Square square = squares[sqr.y][sqr.x];
+        if(square.getEnPassante()) square.enPassante();;
+        square.occupy(mover, mover.getTeam()); // Occupies Square
     }
     /**
      * Allows enPassante

@@ -21,7 +21,6 @@ public abstract class Figure {
         this.bildschirm = bildschirm;
         this.table = table;
     }
-    Figure getID() {return this;}
 
     Point getPos() {
         return pos;

@@ -21,10 +21,14 @@ public class Knight extends Figure {
     @Override
     ArrayList getLegalMoves() {
 
-        addMoves(-1,0);
-        addMoves(0,1);
-        addMoves(0,-1);
-        addMoves(1,0);
+        addMoves(1,2);
+        addMoves(-1,2);
+        addMoves(1,-2);
+        addMoves(-1,-2);
+        addMoves(-2,-1);
+        addMoves(2,-1);
+        addMoves(2,1);
+        addMoves(-2,1);
 
         return moves;
     }
