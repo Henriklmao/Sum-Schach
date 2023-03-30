@@ -54,6 +54,19 @@ public class Square {
         isOccupied = true;
         this.team = team;
     }
+
+    /**
+     * Checks if Mouse selected this Square
+     * @param mousePos Java.awt.Point
+     * @return if mousePos is on square.
+     */
+    boolean checkMouse(Point mousePos){
+        return mousePos.x > pos.x-width && mousePos.x < pos.x+width
+                && mousePos.y > pos.y-height && mousePos.y < pos.y+height;
+            }
+    Figure getOccupant() {
+        return occupant;
+    }
     /**
      * Allows Square to be en passanted
      * @param mover Type Figure
@@ -93,6 +106,7 @@ public class Square {
      * @return true if occupant is not in same Team
      */
     boolean isEnemy(Chess.Type type) {
+        if (type == null) return false;
         return !(type == team);
     }
 }

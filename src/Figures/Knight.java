@@ -19,7 +19,7 @@ public class Knight extends Figure {
      * @return ArrayList of possible moves
      */
     @Override
-    ArrayList getLegalMoves() {
+    ArrayList<Point> getLegalMoves() {
 
         addMoves(1,2);
         addMoves(-1,2);

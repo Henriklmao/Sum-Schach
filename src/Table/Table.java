@@ -1,4 +1,5 @@
 import sum.kern.Bildschirm;
+import sum.kern.Maus;
 import sum.kern.Stift;
 
 import java.awt.Point;
@@ -39,6 +40,9 @@ public class Table {
     Point getSquare(int x, int y){
         return squares[y][x].getPos();
     }
+    Figure getOccupant(int x, int y){
+        return squares[y][x].ge
+    }
     /**
      * @Method: Draws the Grid field
      */
@@ -78,6 +82,23 @@ public class Table {
     void disableEnPassante(Point sqr) {
         squares[sqr.y][sqr.x].disableEnPassante();
     }
+
+    /**
+     * Checks which square the mouse selected.
+     * @param mouse Object of mouse
+     * @return square with mouse position
+     */
+    Point getMouseSquare(Maus mouse){
+        Point mousePos = new Point(mouse.hPosition(), mouse.vPosition());
+        for (int y = 0; y < 7; y++) {
+            for (int x = 0; x < 7; x++) {
+                if (squares[y][x].checkMouse(mousePos))
+                    return new Point(x, y);
+            }
+        }
+        return null;
+    }
+
     /**
      * @param mover Object of Figure
      * @param trial Java.awt.Point
@@ -108,6 +129,17 @@ public class Table {
             return squares[trial.y][trial.x].isEnemy(mover.getTeam());
         }
         return squares[trial.y][trial.x].getEnPassante();
+    }
+
+    /**
+     * Checks if field occupant is enemy.
+     * @param x Type int
+     * @param y Type int
+     * @param subject Object of Figure
+     * @return if the occupant of the square is an enemy.
+     */
+    boolean isEnemy(int x, int y, Figure subject){
+        return squares[y][x].isEnemy(subject.getTeam());
     }
     /**
      * @Method: resets Stift position to initial position

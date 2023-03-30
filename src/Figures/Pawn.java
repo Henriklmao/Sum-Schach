@@ -22,7 +22,7 @@ public class Pawn extends Figure {
 
     /** Pawn Moveset **/
     @Override
-    ArrayList getLegalMoves() {
+    ArrayList<Point> getLegalMoves() {
         moves.clear();
         // Standard moves incl. first move
         int mov = 1;

@@ -18,15 +18,19 @@ public class Rook extends Figure {
      * @return ArrayList of possible moves
      */
     @Override
-    ArrayList getLegalMoves() {
+    ArrayList<Point> getLegalMoves() {
 
-        addMoves(-1,0);
-        addMoves(0,1);
-        addMoves(0,-1);
-        addMoves(1,0);
-
+        for (int i = 0; i < 4; i++) {
+            boolean Unobstructed = true;
+            do {
+                if (i == 0)
+                for (int j = 0; j <7; j++) {
+                    addMoves(pos.x, j);
+                    if(pos.x, j)
+                }
+            } while (Unobstructed);
+        }
         return moves;
     }
-
-    }
+}
 

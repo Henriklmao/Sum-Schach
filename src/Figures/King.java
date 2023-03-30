@@ -19,7 +19,7 @@ public class King extends Figure {
      * @return ArrayList of possible moves
      */
     @Override
-    ArrayList getLegalMoves() {
+    ArrayList<Point> getLegalMoves() {
 
         addMoves(-1,0);
         addMoves(0,1);

@@ -160,5 +160,8 @@ public class Figures {
         Kings.removeIf(Figure::isDead);
         Knights.removeIf(Figure::isDead);
     }
+    void mov(int x, int y, Figure subject) {
+        subject.mov(x, y);
+    }
 
 }

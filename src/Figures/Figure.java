@@ -27,7 +27,7 @@ public abstract class Figure {
     }
 
     /** @Method: getLegalMoves() stores MoveSet of Figure,   */
-    abstract ArrayList getLegalMoves();
+    abstract ArrayList<Point> getLegalMoves();
     Chess.Type getTeam() {
         return team;
     }
